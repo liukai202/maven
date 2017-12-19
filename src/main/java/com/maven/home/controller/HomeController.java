@@ -16,8 +16,20 @@ import org.springframework.web.servlet.ModelAndView;
 @RestController
 public class HomeController {
 	@RequestMapping("/")
-	public ModelAndView index(HttpServletRequest request,HttpServletResponse response) {
-		ModelAndView mv = new ModelAndView("/index");
+	public ModelAndView index(HttpServletRequest request, HttpServletResponse response) {
+		ModelAndView mv = new ModelAndView("/login");
+		return mv;
+	}
+
+	@RequestMapping("/login")
+	public ModelAndView login(HttpServletRequest request, HttpServletResponse response) {
+		ModelAndView mv = new ModelAndView("/login");
+		return mv;
+	}
+
+	@RequestMapping("/home")
+	public ModelAndView home(HttpServletRequest request, HttpServletResponse response) {
+		ModelAndView mv = new ModelAndView("/home");
 		return mv;
 	}
 }

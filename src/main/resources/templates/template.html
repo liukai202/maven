@@ -1,0 +1,16 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+<head>
+<meta charset="UTF-8" />
+<title>template</title>
+</head>
+<body>
+	<th:block th:fragment="css">
+		<link th:href="@{/plugins/bootstrap-3.3.7/css/bootstrap.min.css}" rel="stylesheet" media="screen" />
+	</th:block>
+	<th:block th:fragment="js">
+		<script th:src="@{/plugins/jquery/jquery-3.2.1.min.js}"></script>
+		<script th:src="@{/plugins/bootstrap-3.3.7/js/bootstrap.min.js}"></script>
+	</th:block>
+</body>
+</html>
