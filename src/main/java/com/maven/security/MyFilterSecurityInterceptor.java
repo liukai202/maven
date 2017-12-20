@@ -1,5 +1,5 @@
 /**
- * copyright by xiner
+ * copyright by liukai
  */
 package com.maven.security;
 
@@ -19,7 +19,7 @@ import org.springframework.security.web.FilterInvocation;
 import org.springframework.security.web.access.intercept.FilterInvocationSecurityMetadataSource;
 
 /**
- * @author xiner
+ * @author liukai
  * @date 2017年7月25日 下午5:26:14
  * @description 
  */

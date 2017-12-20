@@ -1,5 +1,5 @@
 /**
- * copyright by xiner
+ * copyright by liukai
  */
 package com.maven.security;
 
@@ -18,11 +18,11 @@ import org.springframework.security.core.GrantedAuthority;
 import org.springframework.stereotype.Service;
 
 /**
- * @author xiner
+ * @author liukai
  * @date 2017年7月25日 下午5:52:06
  * @description 
  */
-@Service("jpaAccessDecisionManager")
+@Service("myAccessDecisionManager")
 public class MyAccessDecisionManager implements AccessDecisionManager{
 	
 	private final static Logger logger = LoggerFactory.getLogger(MyAccessDecisionManager.class);

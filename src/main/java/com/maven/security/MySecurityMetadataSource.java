@@ -1,5 +1,5 @@
 /**
- * copyright by xiner
+ * copyright by liukai
  */
 package com.maven.security;
 
@@ -22,11 +22,11 @@ import org.springframework.util.AntPathMatcher;
 import com.maven.auth.service.AuthService;
 
 /**
- * @author xiner
+ * @author liukai
  * @date 2017年7月25日 下午5:42:39
  * @description 
  */
-@Service("jpaSecurityMetadataSource")
+@Service("mySecurityMetadataSource")
 public class MySecurityMetadataSource implements FilterInvocationSecurityMetadataSource{
 	
 	private final static Logger logger = LoggerFactory.getLogger(MySecurityMetadataSource.class);

@@ -1,5 +1,5 @@
 /**
- * copyright by xiner
+ * copyright by liukai
  */
 package com.maven.security;
 
@@ -7,7 +7,6 @@ import java.util.ArrayList;
 import java.util.List;
 
 import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.context.MessageSource;
 import org.springframework.security.core.GrantedAuthority;
 import org.springframework.security.core.authority.SimpleGrantedAuthority;
 import org.springframework.security.core.userdetails.UserDetails;
@@ -20,17 +19,15 @@ import com.maven.auth.entity.Role;
 import com.maven.auth.entity.User;
 
 /**
- * @author xiner
+ * @author liukai
  * @date 2017年7月15日 下午2:35:12
  * @description 自定义UserDetailsService，用户信息使用数据库的方式
  */
-@Service("jpaUserDetailsService")
+@Service("myUserDetailsService")
 public class MyUserDetailsService implements UserDetailsService{
 	
 	@Autowired
 	private UserDao userDao;
-	@Autowired
-	private MessageSource messageSource;
 
 	/* (non-Javadoc)
 	 * @see org.springframework.security.core.userdetails.UserDetailsService#loadUserByUsername(java.lang.String)
@@ -39,7 +36,7 @@ public class MyUserDetailsService implements UserDetailsService{
 	public UserDetails loadUserByUsername(String username) throws UsernameNotFoundException {
 		User user = this.userDao.findByUsername(username);
 		if(user==null) {
-			throw new UsernameNotFoundException(this.messageSource.getMessage("DigestAuthenticationFilter.usernameNotFound", new Object[] {username}, null));
+			throw new UsernameNotFoundException("用户"+username+"不存在！");
 		}
 		List<GrantedAuthority> authorities = new ArrayList<GrantedAuthority>();
 		List<Role> roles = user.getRoles();
