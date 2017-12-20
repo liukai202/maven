@@ -31,7 +31,12 @@ public class WebSecurityConfig extends WebSecurityConfigurerAdapter{
                 .permitAll()
                 .and()
             .logout()
-                .permitAll();
+                .permitAll()
+                .and()
+            .rememberMe()
+            	.tokenValiditySeconds(1209600)//默认2周
+            	.rememberMeCookieName("remember-me")
+				.rememberMeParameter("remember-me");
     }
 
     @Autowired
