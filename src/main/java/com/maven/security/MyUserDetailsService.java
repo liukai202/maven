@@ -6,6 +6,8 @@ package com.maven.security;
 import java.util.ArrayList;
 import java.util.List;
 
+import javax.transaction.Transactional;
+
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.security.core.GrantedAuthority;
 import org.springframework.security.core.authority.SimpleGrantedAuthority;
@@ -23,6 +25,7 @@ import com.maven.auth.entity.User;
  * @date 2017年7月15日 下午2:35:12
  * @description 自定义UserDetailsService，用户信息使用数据库的方式
  */
+@Transactional
 @Service("myUserDetailsService")
 public class MyUserDetailsService implements UserDetailsService{
 	
