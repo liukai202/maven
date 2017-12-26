@@ -1,6 +1,6 @@
 package com.maven.auth.dao;
 
-import org.springframework.data.repository.RepositoryDefinition;
+import org.springframework.data.repository.CrudRepository;
 
 import com.maven.auth.entity.Resource;
 
@@ -10,7 +10,6 @@ import com.maven.auth.entity.Resource;
  * @description
  * 
  */
-@RepositoryDefinition(domainClass = Resource.class, idClass = Long.class)
-public interface ResourceDao {
+public interface ResourceDao extends CrudRepository<Resource, Long>{
 	
 }

@@ -45,7 +45,7 @@ public class Role implements Serializable {
 	@ManyToMany(fetch = FetchType.LAZY, cascade = { CascadeType.MERGE, CascadeType.PERSIST, CascadeType.REFRESH })
 	@JoinTable(name = "SYS_ROLES_AUTHORITIES", joinColumns = {
 			@JoinColumn(name = "ROLE_ID", referencedColumnName = "ID") }, inverseJoinColumns = {
-					@JoinColumn(name = "AUTHORITIES_ID", referencedColumnName = "ID") })
+					@JoinColumn(name = "AUTHORITY_ID", referencedColumnName = "ID") })
 	private List<Authority> authorities;
 
 	public Long getId() {

@@ -1,6 +1,6 @@
 package com.maven.auth.dao;
 
-import org.springframework.data.repository.RepositoryDefinition;
+import org.springframework.data.repository.CrudRepository;
 
 import com.maven.auth.entity.User;
 
@@ -10,8 +10,7 @@ import com.maven.auth.entity.User;
  * @description 
  * 
  */
-@RepositoryDefinition(domainClass = User.class, idClass = Long.class)
-public interface UserDao {
+public interface UserDao extends CrudRepository<User, Long>{
 	/**
 	 * 根据用户名查询用户
 	 * @param username
