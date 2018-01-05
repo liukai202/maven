@@ -32,11 +32,10 @@
 			<artifactId>spring-boot-starter-security</artifactId>
 		</dependency>
 		
-		<!-- mvn install:install-file -Dfile=ojdbc8-12.2.0.1.0.jar -DgroupId=com.oracle 
-			-DartifactId=ojdbc8 -Dversion=12.2.0.1.0 -Dpackaging=jar -->
+		<!-- mvn install:install-file -Dfile=d:\ojdbc.jar -DgroupId=com.oracle -DartifactId=ojdbc -Dversion=12.2.0.1.0 -Dpackaging=jar -->
 		<dependency>
 			<groupId>com.oracle</groupId>
-			<artifactId>ojdbc8</artifactId>
+			<artifactId>ojdbc</artifactId>
 			<version>12.2.0.1.0</version>
 		</dependency>
 
