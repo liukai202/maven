@@ -135,7 +135,7 @@ public class InitDefaultAuthServiceImpl implements InitDefaultAuthService{
 		res2.setEnabled(true);
 		res2.setName("静态资源");
 		res2.setParentId(null);
-		res2.setPath("/plugins");
+		res2.setPath("/plugins/**");
 		res2.setPriority(1);
 		res2.setType("URL");
 		res2 = this.resourceDao.save(res2);
