@@ -1,24 +1,18 @@
-/**
- * copyright by liukai
- */
 package com.maven.auth.entity;
 
-import java.io.Serializable;
 import java.util.List;
 
 import javax.persistence.CascadeType;
 import javax.persistence.Column;
 import javax.persistence.Entity;
 import javax.persistence.FetchType;
-import javax.persistence.GeneratedValue;
-import javax.persistence.GenerationType;
-import javax.persistence.Id;
 import javax.persistence.JoinColumn;
 import javax.persistence.JoinTable;
 import javax.persistence.ManyToMany;
 import javax.persistence.Table;
 
 import com.fasterxml.jackson.annotation.JsonIgnore;
+import com.maven.base.entity.BaseEntity;
 
 /**
  * @author liukai
@@ -27,109 +21,125 @@ import com.fasterxml.jackson.annotation.JsonIgnore;
  */
 @Entity
 @Table(name = "SYS_AUTHORITY")
-public class Authority implements Serializable {
-
+public class Authority extends BaseEntity {
+	
 	private static final long serialVersionUID = 6178831420741842962L;
-
-	@Id
-	@GeneratedValue(strategy = GenerationType.SEQUENCE)
-	private Long id;// 主键
+	
 	@Column(name = "PARENT_ID")
-	private Long parentId;
+	private String parentId;
+	
 	private String name;// 权限名称
+	
 	private String description;// 权限描述
+	
 	private Boolean enabled;// 是否可用
-
+	
 	@ManyToMany(fetch = FetchType.LAZY, mappedBy = "authorities")
 	@JsonIgnore
 	private List<Role> roles;
-
+	
 	@ManyToMany(fetch = FetchType.LAZY, cascade = { CascadeType.MERGE, CascadeType.PERSIST, CascadeType.REFRESH })
-	@JoinTable(name = "SYS_AUTHORITIES_RESOURCES", joinColumns = {
-			@JoinColumn(name = "AUTHORITY_ID", referencedColumnName = "ID") }, inverseJoinColumns = {
-					@JoinColumn(name = "RESOURCE_ID", referencedColumnName = "ID") })
+	@JoinTable(name = "SYS_AUTHORITIES_RESOURCES", 
+		joinColumns = {@JoinColumn(name = "AUTHORITY_ID", referencedColumnName = "ID") }, 
+		inverseJoinColumns = {@JoinColumn(name = "RESOURCE_ID", referencedColumnName = "ID") })
 	@JsonIgnore
 	private List<Resource> resources;
-
-	public Long getId() {
-		return id;
-	}
-
-	public void setId(Long id) {
-		this.id = id;
-	}
-
-	public Long getParentId() {
+	
+	/**
+	 * @return the parentId
+	 */
+	public String getParentId() {
 		return parentId;
 	}
-
-	public void setParentId(Long parentId) {
+	/**
+	 * @param parentId the parentId to set
+	 */
+	public void setParentId(String parentId) {
 		this.parentId = parentId;
 	}
-
+	/**
+	 * @return the name
+	 */
 	public String getName() {
 		return name;
 	}
-
+	/**
+	 * @param name the name to set
+	 */
 	public void setName(String name) {
 		this.name = name;
 	}
-
+	/**
+	 * @return the description
+	 */
 	public String getDescription() {
 		return description;
 	}
-
+	/**
+	 * @param description the description to set
+	 */
 	public void setDescription(String description) {
 		this.description = description;
 	}
-
+	/**
+	 * @return the enabled
+	 */
 	public Boolean getEnabled() {
 		return enabled;
 	}
-
+	/**
+	 * @param enabled the enabled to set
+	 */
 	public void setEnabled(Boolean enabled) {
 		this.enabled = enabled;
 	}
-
+	/**
+	 * @return the roles
+	 */
 	public List<Role> getRoles() {
 		return roles;
 	}
-
+	/**
+	 * @param roles the roles to set
+	 */
 	public void setRoles(List<Role> roles) {
 		this.roles = roles;
 	}
-
+	/**
+	 * @return the resources
+	 */
 	public List<Resource> getResources() {
 		return resources;
 	}
-
+	/**
+	 * @param resources the resources to set
+	 */
 	public void setResources(List<Resource> resources) {
 		this.resources = resources;
 	}
-
-	public static long getSerialversionuid() {
-		return serialVersionUID;
-	}
-
+	/* (non-Javadoc)
+	 * @see java.lang.Object#hashCode()
+	 */
 	@Override
 	public int hashCode() {
 		final int prime = 31;
-		int result = 1;
+		int result = super.hashCode();
 		result = prime * result + ((description == null) ? 0 : description.hashCode());
 		result = prime * result + ((enabled == null) ? 0 : enabled.hashCode());
-		result = prime * result + ((id == null) ? 0 : id.hashCode());
 		result = prime * result + ((name == null) ? 0 : name.hashCode());
 		result = prime * result + ((parentId == null) ? 0 : parentId.hashCode());
 		result = prime * result + ((resources == null) ? 0 : resources.hashCode());
 		result = prime * result + ((roles == null) ? 0 : roles.hashCode());
 		return result;
 	}
-
+	/* (non-Javadoc)
+	 * @see java.lang.Object#equals(java.lang.Object)
+	 */
 	@Override
 	public boolean equals(Object obj) {
 		if (this == obj)
 			return true;
-		if (obj == null)
+		if (!super.equals(obj))
 			return false;
 		if (getClass() != obj.getClass())
 			return false;
@@ -143,11 +153,6 @@ public class Authority implements Serializable {
 			if (other.enabled != null)
 				return false;
 		} else if (!enabled.equals(other.enabled))
-			return false;
-		if (id == null) {
-			if (other.id != null)
-				return false;
-		} else if (!id.equals(other.id))
 			return false;
 		if (name == null) {
 			if (other.name != null)
@@ -171,11 +176,12 @@ public class Authority implements Serializable {
 			return false;
 		return true;
 	}
-
+	/* (non-Javadoc)
+	 * @see java.lang.Object#toString()
+	 */
 	@Override
 	public String toString() {
-		return "Authority [id=" + id + ", parentId=" + parentId + ", name=" + name + ", description=" + description
-				+ ", enabled=" + enabled + ", roles=" + roles + ", resources=" + resources + "]";
+		return "Authority [parentId=" + parentId + ", name=" + name + ", description=" + description + ", enabled="
+				+ enabled + ", roles=" + roles + ", resources=" + resources + "]";
 	}
-
 }

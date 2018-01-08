@@ -1,16 +1,10 @@
-/**
- * copyright by liukai
- */
 package com.maven.auth.entity;
-
-import java.io.Serializable;
 
 import javax.persistence.Column;
 import javax.persistence.Entity;
-import javax.persistence.GeneratedValue;
-import javax.persistence.GenerationType;
-import javax.persistence.Id;
 import javax.persistence.Table;
+
+import com.maven.base.entity.BaseEntity;
 
 /**
  * @author liukai
@@ -19,61 +13,59 @@ import javax.persistence.Table;
  */
 @Entity
 @Table(name = "SYS_AUTHORITIES_RESOURCES")
-public class AuthoritiesResources implements Serializable {
-
+public class AuthoritiesResources extends BaseEntity {
+	
 	private static final long serialVersionUID = 7488429747240670083L;
-
-	@Id
-	@GeneratedValue(strategy = GenerationType.SEQUENCE)
-	private Long id;
+	
 	@Column(name = "AUTHORITY_ID")
-	private Long authorityId;// 角色ID
+	private String authorityId;// 角色ID
+	
 	@Column(name = "RESOURCE_ID")
-	private Long resourceId;// 资源ID
-
-	public Long getId() {
-		return id;
-	}
-
-	public void setId(Long id) {
-		this.id = id;
-	}
-
-	public Long getAuthorityId() {
+	private String resourceId;// 资源ID
+	
+	/**
+	 * @return the authorityId
+	 */
+	public String getAuthorityId() {
 		return authorityId;
 	}
-
-	public void setAuthorityId(Long authorityId) {
+	/**
+	 * @param authorityId the authorityId to set
+	 */
+	public void setAuthorityId(String authorityId) {
 		this.authorityId = authorityId;
 	}
-
-	public Long getResourceId() {
+	/**
+	 * @return the resourceId
+	 */
+	public String getResourceId() {
 		return resourceId;
 	}
-
-	public void setResourceId(Long resourceId) {
+	/**
+	 * @param resourceId the resourceId to set
+	 */
+	public void setResourceId(String resourceId) {
 		this.resourceId = resourceId;
 	}
-
-	public static long getSerialversionuid() {
-		return serialVersionUID;
-	}
-
+	/* (non-Javadoc)
+	 * @see java.lang.Object#hashCode()
+	 */
 	@Override
 	public int hashCode() {
 		final int prime = 31;
-		int result = 1;
+		int result = super.hashCode();
 		result = prime * result + ((authorityId == null) ? 0 : authorityId.hashCode());
-		result = prime * result + ((id == null) ? 0 : id.hashCode());
 		result = prime * result + ((resourceId == null) ? 0 : resourceId.hashCode());
 		return result;
 	}
-
+	/* (non-Javadoc)
+	 * @see java.lang.Object#equals(java.lang.Object)
+	 */
 	@Override
 	public boolean equals(Object obj) {
 		if (this == obj)
 			return true;
-		if (obj == null)
+		if (!super.equals(obj))
 			return false;
 		if (getClass() != obj.getClass())
 			return false;
@@ -83,11 +75,6 @@ public class AuthoritiesResources implements Serializable {
 				return false;
 		} else if (!authorityId.equals(other.authorityId))
 			return false;
-		if (id == null) {
-			if (other.id != null)
-				return false;
-		} else if (!id.equals(other.id))
-			return false;
 		if (resourceId == null) {
 			if (other.resourceId != null)
 				return false;
@@ -95,10 +82,11 @@ public class AuthoritiesResources implements Serializable {
 			return false;
 		return true;
 	}
-
+	/* (non-Javadoc)
+	 * @see java.lang.Object#toString()
+	 */
 	@Override
 	public String toString() {
-		return "AuthoritiesResources [id=" + id + ", authorityId=" + authorityId + ", resourceId=" + resourceId + "]";
+		return "AuthoritiesResources [authorityId=" + authorityId + ", resourceId=" + resourceId + "]";
 	}
-
 }

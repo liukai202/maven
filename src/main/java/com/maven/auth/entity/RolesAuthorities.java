@@ -3,14 +3,11 @@
  */
 package com.maven.auth.entity;
 
-import java.io.Serializable;
-
 import javax.persistence.Column;
 import javax.persistence.Entity;
-import javax.persistence.GeneratedValue;
-import javax.persistence.GenerationType;
-import javax.persistence.Id;
 import javax.persistence.Table;
+
+import com.maven.base.entity.BaseEntity;
 
 /**
  * @author liukai
@@ -19,61 +16,64 @@ import javax.persistence.Table;
  */
 @Entity
 @Table(name = "SYS_ROLES_AUTHORITIES")
-public class RolesAuthorities implements Serializable {
+public class RolesAuthorities  extends BaseEntity {
 
 	private static final long serialVersionUID = -7207518044254055503L;
 
-	@Id
-	@GeneratedValue(strategy = GenerationType.SEQUENCE)
-	private Long id;
 	@Column(name = "ROLE_ID")
-	private Long roleId;// 用户ID
+	private String roleId;// 用户ID
+	
 	@Column(name = "AUTHORITY_ID")
-	private Long authorityId;// 权限ID
+	private String authorityId;// 权限ID
 
-	public Long getId() {
-		return id;
-	}
-
-	public void setId(Long id) {
-		this.id = id;
-	}
-
-	public Long getRoleId() {
+	/**
+	 * @return the roleId
+	 */
+	public String getRoleId() {
 		return roleId;
 	}
 
-	public void setRoleId(Long roleId) {
+	/**
+	 * @param roleId the roleId to set
+	 */
+	public void setRoleId(String roleId) {
 		this.roleId = roleId;
 	}
 
-	public Long getAuthorityId() {
+	/**
+	 * @return the authorityId
+	 */
+	public String getAuthorityId() {
 		return authorityId;
 	}
 
-	public void setAuthorityId(Long authorityId) {
+	/**
+	 * @param authorityId the authorityId to set
+	 */
+	public void setAuthorityId(String authorityId) {
 		this.authorityId = authorityId;
 	}
 
-	public static long getSerialversionuid() {
-		return serialVersionUID;
-	}
-
+	/* (non-Javadoc)
+	 * @see java.lang.Object#hashCode()
+	 */
 	@Override
 	public int hashCode() {
 		final int prime = 31;
-		int result = 1;
+		int result = super.hashCode();
 		result = prime * result + ((authorityId == null) ? 0 : authorityId.hashCode());
-		result = prime * result + ((id == null) ? 0 : id.hashCode());
 		result = prime * result + ((roleId == null) ? 0 : roleId.hashCode());
 		return result;
 	}
 
+	/* (non-Javadoc)
+	 * @see java.lang.Object#equals(java.lang.Object)
+	 */
 	@Override
 	public boolean equals(Object obj) {
 		if (this == obj)
 			return true;
-		if (obj == null)
+		if (!super.equals(obj))
 			return false;
 		if (getClass() != obj.getClass())
 			return false;
@@ -83,11 +83,6 @@ public class RolesAuthorities implements Serializable {
 				return false;
 		} else if (!authorityId.equals(other.authorityId))
 			return false;
-		if (id == null) {
-			if (other.id != null)
-				return false;
-		} else if (!id.equals(other.id))
-			return false;
 		if (roleId == null) {
 			if (other.roleId != null)
 				return false;
@@ -96,9 +91,12 @@ public class RolesAuthorities implements Serializable {
 		return true;
 	}
 
+	/* (non-Javadoc)
+	 * @see java.lang.Object#toString()
+	 */
 	@Override
 	public String toString() {
-		return "RolesAuthorities [id=" + id + ", roleId=" + roleId + ", authorityId=" + authorityId + "]";
+		return "RolesAuthorities [roleId=" + roleId + ", authorityId=" + authorityId + "]";
 	}
 
 }

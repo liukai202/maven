@@ -24,10 +24,13 @@ public class PersistentLogins implements Serializable {
 
 	@Column(nullable = true)
 	private String username;
+	
 	@Id
 	private String series;
+	
 	@Column(nullable = true)
 	private String token;
+	
 	@Column(nullable = true, name = "LAST_USED")
 	private Timestamp lastUsed;
 

@@ -3,21 +3,18 @@
  */
 package com.maven.auth.entity;
 
-import java.io.Serializable;
 import java.util.List;
 
 import javax.persistence.CascadeType;
 import javax.persistence.Entity;
 import javax.persistence.FetchType;
-import javax.persistence.GeneratedValue;
-import javax.persistence.GenerationType;
-import javax.persistence.Id;
 import javax.persistence.JoinColumn;
 import javax.persistence.JoinTable;
 import javax.persistence.ManyToMany;
 import javax.persistence.Table;
 
 import com.fasterxml.jackson.annotation.JsonIgnore;
+import com.maven.base.entity.BaseEntity;
 
 /**
  * @author liukai
@@ -26,16 +23,16 @@ import com.fasterxml.jackson.annotation.JsonIgnore;
  */
 @Entity
 @Table(name = "SYS_ROLE")
-public class Role implements Serializable {
+public class Role extends BaseEntity{
 
 	private static final long serialVersionUID = -444870890145597623L;
 
-	@Id
-	@GeneratedValue(strategy = GenerationType.SEQUENCE)
-	private Long id;// 主键
 	private String code;// 角色的代码
+	
 	private String name;// 角色名
+	
 	private String description;// 角色描述
+	
 	private Boolean enabled;// 是否可用
 
 	@ManyToMany(fetch = FetchType.LAZY, mappedBy = "roles")
@@ -48,85 +45,114 @@ public class Role implements Serializable {
 					@JoinColumn(name = "AUTHORITY_ID", referencedColumnName = "ID") })
 	private List<Authority> authorities;
 
-	public Long getId() {
-		return id;
-	}
-
-	public void setId(Long id) {
-		this.id = id;
-	}
-
+	/**
+	 * @return the code
+	 */
 	public String getCode() {
 		return code;
 	}
 
+	/**
+	 * @param code the code to set
+	 */
 	public void setCode(String code) {
 		this.code = code;
 	}
 
+	/**
+	 * @return the name
+	 */
 	public String getName() {
 		return name;
 	}
 
+	/**
+	 * @param name the name to set
+	 */
 	public void setName(String name) {
 		this.name = name;
 	}
 
+	/**
+	 * @return the description
+	 */
 	public String getDescription() {
 		return description;
 	}
 
+	/**
+	 * @param description the description to set
+	 */
 	public void setDescription(String description) {
 		this.description = description;
 	}
 
+	/**
+	 * @return the enabled
+	 */
 	public Boolean getEnabled() {
 		return enabled;
 	}
 
+	/**
+	 * @param enabled the enabled to set
+	 */
 	public void setEnabled(Boolean enabled) {
 		this.enabled = enabled;
 	}
 
+	/**
+	 * @return the users
+	 */
 	public List<User> getUsers() {
 		return users;
 	}
 
+	/**
+	 * @param users the users to set
+	 */
 	public void setUsers(List<User> users) {
 		this.users = users;
 	}
 
+	/**
+	 * @return the authorities
+	 */
 	public List<Authority> getAuthorities() {
 		return authorities;
 	}
 
+	/**
+	 * @param authorities the authorities to set
+	 */
 	public void setAuthorities(List<Authority> authorities) {
 		this.authorities = authorities;
 	}
 
-	public static long getSerialversionuid() {
-		return serialVersionUID;
-	}
-
+	/* (non-Javadoc)
+	 * @see java.lang.Object#hashCode()
+	 */
 	@Override
 	public int hashCode() {
 		final int prime = 31;
-		int result = 1;
+		int result = super.hashCode();
 		result = prime * result + ((authorities == null) ? 0 : authorities.hashCode());
 		result = prime * result + ((code == null) ? 0 : code.hashCode());
 		result = prime * result + ((description == null) ? 0 : description.hashCode());
 		result = prime * result + ((enabled == null) ? 0 : enabled.hashCode());
-		result = prime * result + ((id == null) ? 0 : id.hashCode());
 		result = prime * result + ((name == null) ? 0 : name.hashCode());
 		result = prime * result + ((users == null) ? 0 : users.hashCode());
 		return result;
 	}
 
+	/* (non-Javadoc)
+	 * @see java.lang.Object#equals(java.lang.Object)
+	 */
 	@Override
 	public boolean equals(Object obj) {
 		if (this == obj)
 			return true;
-		if (obj == null)
+		if (!super.equals(obj))
 			return false;
 		if (getClass() != obj.getClass())
 			return false;
@@ -151,11 +177,6 @@ public class Role implements Serializable {
 				return false;
 		} else if (!enabled.equals(other.enabled))
 			return false;
-		if (id == null) {
-			if (other.id != null)
-				return false;
-		} else if (!id.equals(other.id))
-			return false;
 		if (name == null) {
 			if (other.name != null)
 				return false;
@@ -169,10 +190,13 @@ public class Role implements Serializable {
 		return true;
 	}
 
+	/* (non-Javadoc)
+	 * @see java.lang.Object#toString()
+	 */
 	@Override
 	public String toString() {
-		return "Role [id=" + id + ", code=" + code + ", name=" + name + ", description=" + description + ", enabled="
-				+ enabled + ", users=" + users + ", authorities=" + authorities + "]";
+		return "Role [code=" + code + ", name=" + name + ", description=" + description + ", enabled=" + enabled
+				+ ", users=" + users + ", authorities=" + authorities + "]";
 	}
 
 }

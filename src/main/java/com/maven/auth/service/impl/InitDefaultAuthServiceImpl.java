@@ -106,7 +106,7 @@ public class InitDefaultAuthServiceImpl implements InitDefaultAuthService{
 		auth1.setDescription("超级管理员权限");
 		auth1.setEnabled(true);
 		auth1.setName("管理员");
-		auth1.setParentId(0L);
+		auth1.setParentId(null);
 		auth1 = this.authorityDao.save(auth1);
 		logger.info("初始化管理员权限:"+auth1.toString());
 		
@@ -114,7 +114,7 @@ public class InitDefaultAuthServiceImpl implements InitDefaultAuthService{
 		auth2.setDescription("匿名用户权限");
 		auth2.setEnabled(true);
 		auth2.setName("匿名用户");
-		auth2.setParentId(0L);
+		auth2.setParentId(null);
 		auth2 = this.authorityDao.save(auth2);
 		logger.info("初始化匿名用户权限:"+auth2.toString());
 		
@@ -123,7 +123,7 @@ public class InitDefaultAuthServiceImpl implements InitDefaultAuthService{
 		res1.setDescription("系统所有请求URL");
 		res1.setEnabled(true);
 		res1.setName("所有资源");
-		res1.setParentId(0L);
+		res1.setParentId(null);
 		res1.setPath("/**");
 		res1.setPriority(9999999);
 		res1.setType("URL");
@@ -134,7 +134,7 @@ public class InitDefaultAuthServiceImpl implements InitDefaultAuthService{
 		res2.setDescription("系统所有静态资源路径");
 		res2.setEnabled(true);
 		res2.setName("静态资源");
-		res2.setParentId(0L);
+		res2.setParentId(null);
 		res2.setPath("/plugins");
 		res2.setPriority(1);
 		res2.setType("URL");
@@ -145,7 +145,7 @@ public class InitDefaultAuthServiceImpl implements InitDefaultAuthService{
 		res3.setDescription("系统浏览器图标路径");
 		res3.setEnabled(true);
 		res3.setName("favicon");
-		res3.setParentId(0L);
+		res3.setParentId(null);
 		res3.setPath("/favicon.ico");
 		res3.setPriority(1);
 		res3.setType("URL");
@@ -156,7 +156,7 @@ public class InitDefaultAuthServiceImpl implements InitDefaultAuthService{
 		res4.setDescription("系统根路径");
 		res4.setEnabled(true);
 		res4.setName("根路径");
-		res4.setParentId(0L);
+		res4.setParentId(null);
 		res4.setPath("/");
 		res4.setPriority(1);
 		res4.setType("URL");
@@ -167,7 +167,7 @@ public class InitDefaultAuthServiceImpl implements InitDefaultAuthService{
 		res5.setDescription("系统登录路径");
 		res5.setEnabled(true);
 		res5.setName("登录路径");
-		res5.setParentId(0L);
+		res5.setParentId(null);
 		res5.setPath("/login");
 		res5.setPriority(1);
 		res5.setType("URL");
