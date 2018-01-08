@@ -1,6 +1,3 @@
-/**
- * copyright by liukai
- */
 package com.maven.auth.entity;
 
 import java.util.List;

@@ -1,6 +1,3 @@
-/**
- * copyright by xiner
- */
 package com.maven.auth.entity;
 
 import java.io.Serializable;

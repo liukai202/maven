@@ -1,6 +1,3 @@
-/**
- * copyright by liukai
- */
 package com.maven.auth.entity;
 
 import javax.persistence.Column;
@@ -20,10 +17,10 @@ public class UsersRoles  extends BaseEntity {
 
 	private static final long serialVersionUID = -393654572080591070L;
 
-	@Column(name = "USER_ID")
+	@Column(name = "USER_ID",length=32)
 	private String userId;// 用户ID
 	
-	@Column(name = "ROLE_ID")
+	@Column(name = "ROLE_ID",length=32)
 	private String roleId;// 角色ID
 
 	/**

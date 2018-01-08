@@ -17,10 +17,10 @@ public class AuthoritiesResources extends BaseEntity {
 	
 	private static final long serialVersionUID = 7488429747240670083L;
 	
-	@Column(name = "AUTHORITY_ID")
+	@Column(name = "AUTHORITY_ID",length=32)
 	private String authorityId;// 角色ID
 	
-	@Column(name = "RESOURCE_ID")
+	@Column(name = "RESOURCE_ID",length=32)
 	private String resourceId;// 资源ID
 	
 	/**

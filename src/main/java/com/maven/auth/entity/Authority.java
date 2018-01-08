@@ -25,7 +25,7 @@ public class Authority extends BaseEntity {
 	
 	private static final long serialVersionUID = 6178831420741842962L;
 	
-	@Column(name = "PARENT_ID")
+	@Column(name = "PARENT_ID",length=32)
 	private String parentId;
 	
 	private String name;// 权限名称

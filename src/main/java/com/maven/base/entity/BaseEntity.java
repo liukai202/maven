@@ -2,6 +2,7 @@ package com.maven.base.entity;
 
 import java.io.Serializable;
 
+import javax.persistence.Column;
 import javax.persistence.GeneratedValue;
 import javax.persistence.Id;
 import javax.persistence.MappedSuperclass;
@@ -19,6 +20,7 @@ public class BaseEntity implements Serializable {
 	@Id
 	@GenericGenerator(name = "uuid", strategy = "uuid")
 	@GeneratedValue(generator = "uuid")
+	@Column(name="ID",length=32)
 	private String id;
 
 	public String getId() {

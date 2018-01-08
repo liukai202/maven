@@ -1,6 +1,3 @@
-/**
- * copyright by liukai
- */
 package com.maven.auth.entity;
 
 import java.util.List;
@@ -25,7 +22,7 @@ public class Resource extends BaseEntity{
 
 	private static final long serialVersionUID = 2867825418228918097L;
 
-	@Column(name = "PARENT_ID")
+	@Column(name = "PARENT_ID",length=32)
 	private String parentId;
 	
 	private String type;// 资源类型
